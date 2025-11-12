@@ -1,0 +1,16 @@
+<resources>
+    <string-array name="mobility_modes">
+        <item>Walk</item>
+        <item>MBTA</item>
+        <item>Rideshare</item>
+    </string-array>
+
+    <string-array name="categories">
+        <item>museums</item>
+        <item>seafood</item>
+        <item>history</item>
+        <item>outdoors</item>
+        <item>coffee</item>
+        <item>nightlife</item>
+    </string-array>
+</resources>
