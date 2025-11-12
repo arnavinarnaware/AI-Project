@@ -1,0 +1,8 @@
+id,name,lat,lon,category,price_tier,open_from,open_to,avg_dwell_min,admission_cost
+old-north,Old North Church,42.3663,-71.0545,history,$,09:00,17:00,45,0
+constitution,USS Constitution Museum,42.3743,-71.0568,museums,$,09:00,18:00,60,0
+uoh,Union Oyster House,42.3612,-71.0567,seafood,$$,11:00,21:00,60,25
+bpl,Boston Public Library,42.3493,-71.0786,history,$,09:00,17:00,45,0
+boston-common,Boston Common,42.3550,-71.0656,outdoors,$,06:00,22:00,45,0
+quincy,Quincy Market,42.3600,-71.0568,food,$$,10:00,20:00,60,20
+mfa,Museum of Fine Arts,42.3394,-71.0942,museums,$$$,10:00,17:00,90,27
