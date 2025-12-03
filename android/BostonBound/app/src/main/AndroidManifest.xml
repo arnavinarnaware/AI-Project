@@ -13,11 +13,6 @@
         android:theme="@style/Theme.Material3.DayNight.NoActionBar">
 
         <activity
-            android:name=".ResultsActivity"
-            android:label="Itinerary"
-            android:parentActivityName=".MainActivity" />
-
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

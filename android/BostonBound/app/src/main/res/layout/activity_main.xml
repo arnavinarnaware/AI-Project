@@ -1,19 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- App Title -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BostonBound"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Subtitle -->
+        <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Make your ideal itinerary"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Trip Details Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trip details"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Days Traveling -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How many days are you traveling?" />
+
+        <EditText
+            android:id="@+id/etDays"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="e.g. 3"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Car Dropdown -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Will you have a car?" />
+
+        <Spinner
+            android:id="@+id/spinnerCar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Budget Slider -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Budget (total for trip)"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/tvBudgetValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$0"
+            android:layout_marginBottom="4dp" />
+
+        <SeekBar
+            android:id="@+id/seekBudget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="2000"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Distance Slider -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How far are you willing to travel (miles from center)?"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/tvDistanceValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 miles"
+            android:layout_marginBottom="4dp" />
+
+        <SeekBar
+            android:id="@+id/seekDistance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="30"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Preferences Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Preferences (check all that apply)"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <CheckBox
+            android:id="@+id/cbMuseums"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Museums" />
+
+        <CheckBox
+            android:id="@+id/cbRestaurants"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Restaurants + Cafes" />
+
+        <CheckBox
+            android:id="@+id/cbNightlife"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nightlife" />
+
+        <CheckBox
+            android:id="@+id/cbShopping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shopping" />
+
+        <CheckBox
+            android:id="@+id/cbParks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Parks" />
+
+        <!-- Build Itinerary Button -->
+        <Button
+            android:id="@+id/btnBuildItinerary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Build Itinerary"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp" />
+
+    </LinearLayout>
+</ScrollView>
