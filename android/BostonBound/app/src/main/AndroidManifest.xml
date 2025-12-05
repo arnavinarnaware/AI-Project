@@ -12,14 +12,27 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Material3.DayNight.NoActionBar">
 
+        <!-- Results screen (you can add this later if not created yet) -->
         <activity
-            android:name=".MainActivity"
+            android:name=".ResultsActivity"
+            android:label="Itinerary"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- NEW: Home screen is now the launcher -->
+        <activity
+            android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <!-- Existing refine/inputs screen built by your partner -->
+        <activity
+            android:name=".MainActivity"
+            android:label="Build Itinerary"
+            android:exported="false" />
     </application>
+
 </manifest>

@@ -52,17 +52,31 @@
             android:hint="e.g. 3"
             android:layout_marginBottom="12dp" />
 
-        <!-- Car Dropdown -->
+        <!-- Car Yes/No Checkboxes -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Will you have a car?" />
 
-        <Spinner
-            android:id="@+id/spinnerCar"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp" />
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <CheckBox
+                android:id="@+id/cbCarYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes" />
+
+            <CheckBox
+                android:id="@+id/cbCarNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:layout_marginStart="24dp" />
+        </LinearLayout>
 
         <!-- Budget Slider -->
         <TextView
@@ -82,7 +96,7 @@
             android:id="@+id/seekBudget"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="2000"
+            android:max="10000"
             android:layout_marginBottom="16dp" />
 
         <!-- Distance Slider -->
@@ -103,7 +117,7 @@
             android:id="@+id/seekDistance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="30"
+            android:max="100"
             android:layout_marginBottom="16dp" />
 
         <!-- Preferences Section -->
@@ -152,6 +166,14 @@
             android:text="Build Itinerary"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="8dp" />
+
+        <!-- Back Button -->
+        <Button
+            android:id="@+id/btnBackHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back to Home"
+            android:layout_marginBottom="24dp" />
 
     </LinearLayout>
 </ScrollView>

@@ -1,11 +1,15 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from typing import Optional
+
 import csv, math
 
 app = FastAPI()
 
 # Load data from CSV file
 POIS = []
+CURRENT_PREFS_LIKE: set[str] = set()
+
 with open("pois_boston_seed.csv") as f:
     for row in csv.DictReader(f):
         row["lat"] = float(row["lat"])
@@ -20,10 +24,15 @@ class PlanReq(BaseModel):
     start_time: str
     end_time: str
     budget_total: float
-    mobility: str
+    mobility: str = "walk"
     preferences: dict = {}
     strategy: str = "static_budget"
     must_see: list[str] = []
+
+    # NEW FIELDS that match your Android UI
+    days: Optional[int] = None
+    has_car: Optional[bool] = None
+    max_distance_miles: Optional[int] = None
 
 def minutes(t):
     h, m = map(int, t.split(":"))
@@ -52,6 +61,12 @@ def score(poi, strategy):
     else:
         base += -price_norm(poi["price_tier"]) * 0.4
         base += 0.8 if poi["category"] in {"museums","food","history"} else 0
+    
+    # NEW: preference bump (we'll pass a set of liked categories)
+    likes = CURRENT_PREFS_LIKE  # we’ll define this global shortly
+    if likes and poi["category"] in likes:
+        base += 1.0
+    
     return base
 
 @app.get("/pois")
@@ -64,6 +79,21 @@ def plan(req: PlanReq):
     end = minutes(req.end_time)
     t = start
     budget = req.budget_total
+    # Choose travel speed based on mobility / car access
+    if req.has_car:
+        speed_kmh = 25.0   # approximate city driving
+    else:
+        speed_kmh = {
+            "walk": 5.0,
+            "mbta": 15.0,
+            "rideshare": 25.0,
+        }.get(req.mobility.lower(), 5.0)
+    
+    global CURRENT_PREFS_LIKE
+    # expect preferences like {"like": ["museums", "food", ...]}
+    like_list = req.preferences.get("like", []) if isinstance(req.preferences, dict) else []
+    CURRENT_PREFS_LIKE = {x.lower() for x in like_list}
+
     route = []
     legs = []
     cur = {"lat":42.3601,"lon":-71.0589,"name":"Start"}  # Boston approx
@@ -74,7 +104,7 @@ def plan(req: PlanReq):
         for p in POIS:
             if p["id"] in visited:
                 continue
-            travel = haversine_mins(cur, p)
+            travel = haversine_mins(cur, p, speed_kmh=speed_kmh)
             arrive = t + travel
             open_from = minutes(p["open_from"])
             open_to = minutes(p["open_to"])
