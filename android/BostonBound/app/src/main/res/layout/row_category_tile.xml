@@ -1,0 +1,42 @@
+<!-- res/layout/row_category_tile.xml -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:layout_margin="8dp"
+    android:background="@android:color/white"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/imgTile"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <View
+        android:id="@+id/overlay"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="#80000000"
+        app:layout_constraintBottom_toBottomOf="@id/imgTile"
+        app:layout_constraintStart_toStartOf="@id/imgTile"
+        app:layout_constraintEnd_toEndOf="@id/imgTile"/>
+
+    <TextView
+        android:id="@+id/tvTileTitle"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/imgTile"
+        app:layout_constraintStart_toStartOf="@id/imgTile"
+        app:layout_constraintEnd_toEndOf="@id/imgTile"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

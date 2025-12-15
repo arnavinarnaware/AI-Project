@@ -21,9 +21,8 @@ class HomeActivity : AppCompatActivity() {
         }
 
         exploreButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("strategy", "static_explorer") 
-            startActivity(intent)
+            startActivity(Intent(this, ExploreBostonActivity::class.java))
         }
+
     }
 }
