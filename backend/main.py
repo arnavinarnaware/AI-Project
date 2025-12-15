@@ -111,11 +111,34 @@ def plan(req: PlanReq):
 
     global CURRENT_PREFS_LIKE
 
-    # 1) preferences.like -> CURRENT_PREFS_LIKE
-    like_list = []
+    # 1) preferences.like -> CURRENT_PREFS_LIKE (normalized to match CSV categories)
+    raw_like = []
     if isinstance(req.preferences, dict):
-        like_list = req.preferences.get("like", [])
-    CURRENT_PREFS_LIKE = {x.lower() for x in like_list}
+        raw_like = req.preferences.get("like", []) or []
+
+    # map UI labels/synonyms to your CSV categories
+    CATEGORY_MAP = {
+        "museums": "museums",
+        "museum": "museums",
+        "restaurants": "food",
+        "restaurants + cafes": "food",
+        "cafes": "coffee",
+        "coffee": "coffee",
+        "seafood": "seafood",
+        "history": "history",
+        "outdoors": "outdoors",
+        "parks": "outdoors",
+        "park": "outdoors",
+        "nightlife": "nightlife",
+        "shopping": "shopping",
+    }
+
+    normalized = set()
+    for x in raw_like:
+        key = str(x).strip().lower()
+        normalized.add(CATEGORY_MAP.get(key, key))
+
+    CURRENT_PREFS_LIKE = normalized
 
     # 2) travel speed based on has_car / mobility
     if req.has_car:
@@ -131,22 +154,23 @@ def plan(req: PlanReq):
 
     start = minutes(req.start_time)
     end = minutes(req.end_time)
-    total_budget = req.budget_total
-    days = req.days or 1
+    days = req.days or 1   # define days
+    budget_per_day = req.budget_total / days
+    used_pois = set()   # POIs used on any previous day
 
     # We'll plan across all days; stops include a "day" field
     route = []
     legs = []
-    visited = set()
 
     for day in range(1, days + 1):
         t = start
-        cur = {"lat": 42.3601, "lon": -71.0589, "name": "Start"}  # Boston center
+        cur = {"lat":42.3601,"lon":-71.0589,"name":"Start"}
+        budget = budget_per_day
 
         while True:
             cands = []
             for p in POIS:
-                if p["id"] in visited:
+                if p["id"] in used_pois:
                     continue
 
                 # travel time with chosen speed
@@ -161,7 +185,7 @@ def plan(req: PlanReq):
                     continue
 
                 # respect total budget
-                if total_budget - p["admission_cost"] < 0:
+                if budget - p["admission_cost"] < 0:
                     continue
 
                 # must fit in this day's time window
@@ -202,9 +226,9 @@ def plan(req: PlanReq):
             })
 
             t += p["avg_dwell_min"]
-            total_budget -= p["admission_cost"]
+            budget -= p["admission_cost"]
             cur = p
-            visited.add(p["id"])
+            used_pois.add(p["id"])
 
     return {
         "itinerary_id": f"bos-{req.date}-001",

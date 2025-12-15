@@ -6,3 +6,61 @@ bpl,Boston Public Library,42.3493,-71.0786,history,$,09:00,17:00,45,0
 boston-common,Boston Common,42.3550,-71.0656,outdoors,$,06:00,22:00,45,0
 quincy,Quincy Market,42.3600,-71.0568,food,$$,10:00,20:00,60,20
 mfa,Museum of Fine Arts,42.3394,-71.0942,museums,$$$,10:00,17:00,90,27
+isgm,Isabella Stewart Gardner Museum,42.3388,-71.0993,museums,$$,11:00,17:00,90,22
+mos,Museum of Science,42.3679,-71.0708,museums,$$,09:00,17:00,120,34
+ica,Institute of Contemporary Art,42.3523,-71.0436,museums,$$,10:00,17:00,75,20
+neaq,New England Aquarium,42.3594,-71.0503,museums,$$,09:00,18:00,90,34
+bmfa,Boston Tea Party Ships & Museum,42.3512,-71.0509,museums,$$,10:00,17:00,75,34
+faneuil,Faneuil Hall Marketplace,42.3601,-71.0563,shopping,$$,10:00,20:00,60,0
+newbury,Newbury Street,42.3497,-71.0837,shopping,$$,10:00,21:00,75,0
+prudential,Prudential Center,42.3486,-71.0826,shopping,$$,10:00,21:00,75,0
+copley,Copley Square,42.3496,-71.0777,outdoors,$,06:00,22:00,45,0
+public-garden,Boston Public Garden,42.3542,-71.0703,outdoors,$,06:00,22:00,60,0
+esplanade,Charles River Esplanade,42.3559,-71.0769,outdoors,$,06:00,22:00,75,0
+harborwalk,Boston Harborwalk,42.3609,-71.0495,outdoors,$,06:00,22:00,75,0
+rose-kennedy,Rose Kennedy Greenway,42.3636,-71.0543,outdoors,$,06:00,22:00,60,0
+castle-island,Castle Island,42.3386,-71.0053,outdoors,$,06:00,22:00,90,0
+jfk-lib,John F. Kennedy Presidential Library,42.3171,-71.0366,history,$$,10:00,17:00,90,18
+freedom-trail,Freedom Trail Walk,42.3602,-71.0571,history,$,09:00,18:00,120,0
+paul-revere,Paul Revere House,42.3637,-71.0537,history,$,10:00,17:00,45,6
+old-state,Old State House,42.3588,-71.0578,history,$,10:00,17:00,60,15
+bunker-hill,Bunker Hill Monument,42.3763,-71.0605,history,$,10:00,17:00,60,0
+faneuil-hall,Faneuil Hall,42.3600,-71.0561,history,$,09:00,17:00,45,0
+mit-museum,MIT Museum,42.3624,-71.0872,museums,$$,10:00,17:00,75,18
+harvard-museum,Harvard Museum of Natural History,42.3784,-71.1151,museums,$$,09:00,17:00,75,15
+peabody,Peabody Museum of Archaeology & Ethnology,42.3793,-71.1145,museums,$$,09:00,17:00,75,12
+arnold,Arnold Arboretum,42.2987,-71.1260,outdoors,$,05:00,20:00,90,0
+jamaica-pond,Jamaica Pond,42.3273,-71.1170,outdoors,$,06:00,22:00,75,0
+fenway,The Fenway Neighborhood Walk,42.3430,-71.0968,outdoors,$,06:00,22:00,60,0
+seaport,Seaport District Walk,42.3526,-71.0476,outdoors,$,06:00,22:00,75,0
+north-end,North End Food Crawl,42.3645,-71.0546,food,$$,11:00,22:00,90,25
+legal-sea,Legal Sea Foods (Seaport),42.3519,-71.0469,seafood,$$,11:00,22:00,75,35
+barking-crab,Barking Crab,42.3512,-71.0454,seafood,$$,11:00,22:00,75,30
+neptune,Neptune Oyster,42.3634,-71.0562,seafood,$$,11:00,22:00,75,35
+sail-loft,The Sail Loft,42.3616,-71.0523,seafood,$$,11:00,22:00,75,30
+tatte,Tatte Bakery & Cafe,42.3506,-71.0817,coffee,$$,07:00,19:00,45,15
+thinking-cup,Thinking Cup,42.3522,-71.0786,coffee,$$,07:00,19:00,45,15
+blue-bottle,Blue Bottle Coffee (Seaport),42.3518,-71.0459,coffee,$$,07:00,18:00,45,15
+jonquils,Small Cafe Stop,42.3533,-71.0698,coffee,$,07:00,18:00,40,10
+bar-harbor,Harbor Bar Walk,42.3607,-71.0490,nightlife,$$,17:00,23:00,60,25
+bell-in-hand,Bell In Hand Tavern,42.3611,-71.0570,nightlife,$$,16:00,23:00,75,20
+howl,Howl at the Moon,42.3509,-71.0744,nightlife,$$,17:00,23:00,90,25
+lansdowne,Lansdowne Pub,42.3467,-71.0942,nightlife,$$,16:00,23:00,75,20
+beacon-hill,Beacon Hill Stroll,42.3587,-71.0707,outdoors,$,06:00,22:00,60,0
+acorn,Acorn Street Photo Stop,42.3596,-71.0719,outdoors,$,06:00,22:00,20,0
+coolidge,Commonwealth Ave Mall Walk,42.3516,-71.0765,outdoors,$,06:00,22:00,60,0
+aquarium-plaza,Waterfront Plaza,42.3592,-71.0508,outdoors,$,06:00,22:00,45,0
+boston-opera,Boston Opera House,42.3537,-71.0625,history,$$,10:00,17:00,45,0
+tdgarden,TD Garden Area,42.3662,-71.0621,outdoors,$,06:00,22:00,45,0
+haymarket,Haymarket Market,42.3637,-71.0580,food,$,10:00,18:00,60,10
+china-town,Boston Chinatown Eats,42.3513,-71.0620,food,$$,11:00,22:00,90,25
+kendall,Kendall Square,42.3626,-71.0860,outdoors,$,06:00,22:00,45,0
+harvard-square,Harvard Square,42.3736,-71.1190,outdoors,$,06:00,22:00,60,0
+cambridge-food,Cambridge Food Stop,42.3732,-71.1187,food,$$,11:00,22:00,75,20
+somerville,Somerville Square Walk,42.3876,-71.0995,outdoors,$,06:00,22:00,60,0
+assembly,Assembly Row,42.3925,-71.0771,shopping,$$,10:00,21:00,75,0
+shop-fenway,Fenway Shopping Stop,42.3458,-71.0980,shopping,$$,10:00,21:00,60,0
+night-seaport,Seaport Night Scene,42.3527,-71.0470,nightlife,$$,17:00,23:00,90,25
+night-northend,North End Night Scene,42.3647,-71.0548,nightlife,$$,17:00,23:00,90,25
+parks-backbay,Back Bay Green Space,42.3502,-71.0802,outdoors,$,06:00,22:00,60,0
+parks-charlestown,Charlestown Park Stop,42.3773,-71.0601,outdoors,$,06:00,22:00,60,0

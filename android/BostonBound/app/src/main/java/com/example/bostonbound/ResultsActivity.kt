@@ -2,7 +2,9 @@ package com.example.bostonbound
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +17,9 @@ class ResultsActivity : AppCompatActivity() {
 
     private lateinit var recycler: RecyclerView
     private lateinit var progress: ProgressBar
+    private lateinit var tvLoading: TextView
+    private lateinit var btnEdit: Button
+
     private lateinit var adapter: ItineraryAdapter
     private val api = ApiService.create()
 
@@ -24,8 +29,15 @@ class ResultsActivity : AppCompatActivity() {
 
         recycler = findViewById(R.id.recyclerItinerary)
         progress = findViewById(R.id.progressBar)
+        tvLoading = findViewById(R.id.tvLoading)
+        btnEdit = findViewById(R.id.btnEditPreferences)
 
-        adapter = ItineraryAdapter(emptyList())
+        // Edit preferences = go back to preferences screen
+        btnEdit.setOnClickListener {
+            finish() // returns to MainActivity (your preferences screen)
+        }
+
+        adapter = ItineraryAdapter()
         recycler.layoutManager = LinearLayoutManager(this)
         recycler.adapter = adapter
 
@@ -37,11 +49,11 @@ class ResultsActivity : AppCompatActivity() {
         val prefsLike = intent.getStringArrayListExtra("prefs_like") ?: arrayListOf()
         val strategy = intent.getStringExtra("strategy") ?: "static_budget"
 
-        val mobility = if (hasCar) "car" else "walk"
+        val mobility = if (hasCar) "rideshare" else "walk"
 
         val request = PlanRequest(
             city = "Boston",
-            date = "2025-12-10",         // simple default
+            date = "2025-12-10",
             start_time = "09:00",
             end_time = "19:00",
             budget_total = budget.toDouble(),
@@ -54,20 +66,33 @@ class ResultsActivity : AppCompatActivity() {
             max_distance_miles = maxDist
         )
 
+        // Loading storytelling
         progress.visibility = View.VISIBLE
+        tvLoading.visibility = View.VISIBLE
+        tvLoading.text = "Designing your itinerary…"
 
         GlobalScope.launch(Dispatchers.IO) {
             try {
+                runOnUiThread { tvLoading.text = "Optimizing Itinerary… matching your preferences…" }
+
                 val response = api.planTrip(request)
-                val stops = response.stops
+
                 runOnUiThread {
                     progress.visibility = View.GONE
-                    adapter.updateData(stops)
+                    tvLoading.visibility = View.GONE
+
+                    adapter.updateFromResponse(
+                        response = response,
+                        budgetTotal = budget.toDouble(),
+                        days = days
+                    )
                 }
+
             } catch (e: Exception) {
                 e.printStackTrace()
                 runOnUiThread {
                     progress.visibility = View.GONE
+                    tvLoading.visibility = View.GONE
                     Toast.makeText(
                         this@ResultsActivity,
                         "Error: ${e.message}",

@@ -1,8 +1,8 @@
 package com.example.bostonbound
 
-// matches "preferences": { "like": [...] }
+// matches: "preferences": { "like": [...] }
 data class PreferencesPayload(
-    val like: List<String>? = null
+    val like: List<String> = emptyList()
 )
 
 // Request body for POST /plan
@@ -12,7 +12,7 @@ data class PlanRequest(
     val start_time: String,
     val end_time: String,
     val budget_total: Double,
-    val mobility: String,
+    val mobility: String, // "walk", "mbta", or "rideshare"
     val preferences: PreferencesPayload,
     val strategy: String,
     val must_see: List<String> = emptyList(),
@@ -35,14 +35,16 @@ data class ItineraryStop(
     val start: String,
     val end: String,
     val dwell_min: Int,
-    val admission_est: Double
+    val admission_est: Double,
+    val day: Int
 )
 
 data class Leg(
     val from: String,
     val to: String,
     val mode: String,
-    val eta_min: Int
+    val eta_min: Int,
+    val day: Int // <-- IMPORTANT: backend includes "day" in legs too
 )
 
 data class CostSummary(
