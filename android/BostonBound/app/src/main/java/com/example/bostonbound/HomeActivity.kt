@@ -11,19 +11,18 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        // This is the button on your home screen
         val makeItineraryButton = findViewById<Button>(R.id.btnMakeItinerary)
+        val exploreButton = findViewById<Button>(R.id.btnExploreBoston)
 
-        // When clicked, go to the inputs page your partner made (MainActivity)
         makeItineraryButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("strategy", "static_budget")
             startActivity(intent)
         }
 
-        // Optional: hook up Explore Boston too (for now same destination)
-        val exploreButton = findViewById<Button>(R.id.btnExploreBoston)
         exploreButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("strategy", "static_explorer") 
             startActivity(intent)
         }
     }

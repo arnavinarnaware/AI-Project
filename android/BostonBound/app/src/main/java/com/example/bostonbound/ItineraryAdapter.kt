@@ -13,6 +13,7 @@ class ItineraryAdapter(
     class VH(v: View) : RecyclerView.ViewHolder(v) {
         val name: TextView = v.findViewById(R.id.tvPoiName)
         val time: TextView = v.findViewById(R.id.tvPoiTime)
+        val cost: TextView = v.findViewById(R.id.tvPoiCost)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
@@ -24,8 +25,14 @@ class ItineraryAdapter(
     override fun onBindViewHolder(holder: VH, position: Int) {
         val stop = data[position]
         holder.name.text = stop.name
-        holder.time.text = stop.timeRange
+        holder.time.text = "${stop.start} – ${stop.end}"
+        holder.cost.text = "$${stop.admission_est}"
     }
 
     override fun getItemCount(): Int = data.size
+
+    fun updateData(newData: List<ItineraryStop>) {
+        data = newData
+        notifyDataSetChanged()
+    }
 }
