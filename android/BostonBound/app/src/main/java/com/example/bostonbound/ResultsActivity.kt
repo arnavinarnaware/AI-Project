@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import android.content.Intent
+import android.net.Uri
 
 class ResultsActivity : AppCompatActivity() {
 
@@ -37,7 +39,28 @@ class ResultsActivity : AppCompatActivity() {
             finish() // returns to MainActivity (your preferences screen)
         }
 
-        adapter = ItineraryAdapter()
+        adapter = ItineraryAdapter { stop ->
+            // This opens Google Maps (or asks user to choose a map app)
+            val query = "${stop.name}, Boston, MA"
+            val gmmIntentUri = Uri.parse("geo:0,0?q=" + Uri.encode(query))
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+
+            // Optional: force Google Maps if installed
+            // mapIntent.setPackage("com.google.android.apps.maps")
+
+            // Safe launch
+            if (mapIntent.resolveActivity(packageManager) != null) {
+                startActivity(mapIntent)
+            } else {
+                // fallback: open in browser search
+                val web = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://www.google.com/search?q=" + Uri.encode(query))
+                )
+                startActivity(web)
+            }
+        }
+
         recycler.layoutManager = LinearLayoutManager(this)
         recycler.adapter = adapter
 

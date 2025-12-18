@@ -7,7 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.max
 
-class ItineraryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ItineraryAdapter(
+    private val onStopClick: ((ItineraryStop) -> Unit)? = null
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
 
     companion object {
         private const val TYPE_HEADER = 0
@@ -83,7 +86,10 @@ class ItineraryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 h.name.text = stop.name
                 h.time.text = "${stop.start} – ${stop.end}"
                 h.cost.text = if (stop.admission_est <= 0.0) "Free" else "$" + stop.admission_est.toInt()
+                // Click → open maps (handled by ResultsActivity)
+                h.itemView.setOnClickListener { onStopClick?.invoke(stop) }
             }
+
             is RowItem.SummaryRow -> {
                 val h = holder as SummaryVH
                 h.title.text = "Day ${item.day} Summary"

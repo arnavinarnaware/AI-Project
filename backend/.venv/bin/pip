@@ -1,4 +1,6 @@
-#!/Users/taniaommer/AI-Project/backend/.venv/bin/python3
+#!/bin/sh
+'''exec' "/Users/snehaaugustine/Desktop/Intro to Ai Project/AI-Project/backend/.venv/bin/python3.11" "$0" "$@"
+' '''
 # -*- coding: utf-8 -*-
 import re
 import sys
