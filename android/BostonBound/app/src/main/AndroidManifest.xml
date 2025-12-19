@@ -33,13 +33,12 @@
         <activity android:name=".HistoricalSitesActivity" />
         <activity android:name=".GardensActivity" />
 
-
+        <activity android:name=".MetricsActivity" />
 
         <activity android:name=".PoiDetailsActivity" />
         <activity android:name=".ExploreBostonActivity" />
 
 
-        <!-- Existing refine/inputs screen built by your partner -->
         <activity
             android:name=".MainActivity"
             android:label="Build Itinerary"

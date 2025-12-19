@@ -11,18 +11,30 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val makeItineraryButton = findViewById<Button>(R.id.btnMakeItinerary)
-        val exploreButton = findViewById<Button>(R.id.btnExploreBoston)
-
-        makeItineraryButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("strategy", "static_budget")
-            startActivity(intent)
+        // --- "Make your ideal itinerary" → compare Greedy vs A* and pick best ---
+        findViewById<Button?>(R.id.btnMakeItinerary)?.setOnClickListener {
+            startItinerary(strategy = "ideal")
         }
 
-        exploreButton.setOnClickListener {
+        // --- Greedy-only itinerary ---
+        findViewById<Button?>(R.id.btnGreedyBudget)?.setOnClickListener {
+            startItinerary(strategy = "static_budget")
+        }
+
+        // --- A*-only itinerary ---
+        findViewById<Button?>(R.id.btnAstarBudget)?.setOnClickListener {
+            startItinerary(strategy = "astar_budget")
+        }
+
+        // --- Explore Boston (POI browser) ---
+        findViewById<Button?>(R.id.btnExploreBoston)?.setOnClickListener {
             startActivity(Intent(this, ExploreBostonActivity::class.java))
         }
+    }
 
+    private fun startItinerary(strategy: String) {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("strategy", strategy)
+        startActivity(intent)
     }
 }
